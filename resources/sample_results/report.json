@@ -1,0 +1,24 @@
+{
+  "total_reviews": 5,
+  "sentiments": {
+    "mixed": 1,
+    "negative": 2,
+    "neutral": 0,
+    "positive": 2
+  },
+  "priorities": {
+    "high": 1,
+    "low": 2,
+    "medium": 2
+  },
+  "aspect_mentions": {
+    "delivery": 2,
+    "pricing": 1,
+    "product_quality": 2,
+    "support": 1,
+    "usability": 2
+  },
+  "high_priority_ids": [
+    "4"
+  ]
+}

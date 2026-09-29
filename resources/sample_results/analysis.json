@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "text": "The product quality is exceptional, exceeded all my expectations! Shipping was also super fast.",
+    "analysis": {
+      "sentiment": "positive",
+      "summary": "Customer praises exceptional product quality and fast delivery.",
+      "aspects": [
+        {
+          "name": "product_quality",
+          "sentiment": "positive",
+          "evidence": "product quality is exceptional"
+        },
+        {
+          "name": "delivery",
+          "sentiment": "positive",
+          "evidence": "Shipping was also super fast"
+        }
+      ],
+      "priority": "low",
+      "recommended_action": "Thank customer and highlight feedback in product testimonials."
+    }
+  },
+  {
+    "id": "2",
+    "text": "Customer support took three days to respond to my ticket. Very frustrating experience.",
+    "analysis": {
+      "sentiment": "negative",
+      "summary": "Customer waited three days for support response and was frustrated.",
+      "aspects": [
+        {
+          "name": "support",
+          "sentiment": "negative",
+          "evidence": "Customer support took three days to respond"
+        }
+      ],
+      "priority": "medium",
+      "recommended_action": "Audit support ticket queues and reach out with an apology."
+    }
+  },
+  {
+    "id": "3",
+    "text": "The new dashboard UI is intuitive and easy to navigate, but the subscription pricing feels a bit high.",
+    "analysis": {
+      "sentiment": "mixed",
+      "summary": "Customer likes the new dashboard UI but considers pricing too high.",
+      "aspects": [
+        {
+          "name": "usability",
+          "sentiment": "positive",
+          "evidence": "dashboard UI is intuitive and easy to navigate"
+        },
+        {
+          "name": "pricing",
+          "sentiment": "negative",
+          "evidence": "pricing feels a bit high"
+        }
+      ],
+      "priority": "medium",
+      "recommended_action": "Offer annual discount or tier comparison to customer."
+    }
+  },
+  {
+    "id": "4",
+    "text": "Delivery was delayed by a week, and the package arrived damaged. Please refund.",
+    "analysis": {
+      "sentiment": "negative",
+      "summary": "Delivery delayed a week and arrived damaged with refund requested.",
+      "aspects": [
+        {
+          "name": "delivery",
+          "sentiment": "negative",
+          "evidence": "Delivery was delayed by a week"
+        },
+        {
+          "name": "product_quality",
+          "sentiment": "negative",
+          "evidence": "package arrived damaged"
+        }
+      ],
+      "priority": "high",
+      "recommended_action": "Immediately process refund and initiate carrier damage claim."
+    }
+  },
+  {
+    "id": "5",
+    "text": "Great app overall, simple usability and helps our team daily. Keep up the good work!",
+    "analysis": {
+      "sentiment": "positive",
+      "summary": "Customer finds app highly usable and valuable for daily team workflows.",
+      "aspects": [
+        {
+          "name": "usability",
+          "sentiment": "positive",
+          "evidence": "simple usability and helps our team daily"
+        }
+      ],
+      "priority": "low",
+      "recommended_action": "Request app store or G2 review from customer."
+    }
+  }
+]

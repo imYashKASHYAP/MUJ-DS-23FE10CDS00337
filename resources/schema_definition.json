@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sentiment": {
+      "type": "string",
+      "enum": ["mixed", "negative", "neutral", "positive"]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "aspects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": ["delivery", "other", "pricing", "product_quality", "support", "usability"]
+          },
+          "sentiment": {
+            "type": "string",
+            "enum": ["mixed", "negative", "neutral", "positive"]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "sentiment", "evidence"]
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["high", "low", "medium"]
+    },
+    "recommended_action": {
+      "type": "string"
+    }
+  },
+  "required": ["sentiment", "summary", "aspects", "priority", "recommended_action"]
+}
