@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>FeedbackLens — Customer review intelligence</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-width="3"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z"/><path d="m19 17 .7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17Z"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m0 0L7.5 7.5M12 3l4.5 4.5M4 16v4h16v-4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z" stroke-linejoin="round"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v6h5M8 13h8M8 17h8"/></symbol>
+    <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14c1.1 1.4 2.4 2 4 2s2.9-.6 4-2M9 9h.01M15 9h.01" stroke-linecap="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6m0 4h.01" stroke-linecap="round"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 3h10l8 8-10 10-8-8V3Z"/><circle cx="8" cy="8" r="1"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v4h16v-4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <div class="app-shell" id="top">
+    <aside class="sidebar">
+      <div class="brand">Feedback<span>Lens</span></div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-nav="overview" type="button"><svg><use href="#i-grid"/></svg>Overview</button>
+        <button class="nav-item" data-nav="reviews" type="button"><svg><use href="#i-list"/></svg>Reviews</button>
+        <button class="nav-item" data-nav="analyze" type="button"><svg><use href="#i-spark"/></svg>Analyze</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="workspace-line"><span class="workspace-icon">⌘</span><span>Local workspace</span><span class="online-dot"></span></div>
+        <p id="workspace-count">No reviews loaded</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar" id="overview">
+        <div class="intro">
+          <h1>Understand every customer voice.</h1>
+          <p>Turn customer reviews into clear insights with NLP, right on your computer.</p>
+        </div>
+        <div class="header-actions">
+          <input id="csv-file" type="file" accept=".csv,text/csv" hidden>
+          <button id="upload-btn" class="button button-light" type="button"><svg><use href="#i-upload"/></svg>Upload CSV</button>
+          <button id="analyze-btn" class="button button-primary" type="button" disabled><svg><use href="#i-play"/></svg><span>Analyze reviews</span></button>
+        </div>
+      </header>
+
+      <div class="notice is-hidden" id="notice" role="status" aria-live="polite"><span class="notice-mark"></span><span id="notice-text"></span></div>
+
+      <section class="empty-panel" id="empty-state" aria-label="Upload reviews">
+        <div class="empty-icon"><svg><use href="#i-upload"/></svg></div>
+        <h2 id="empty-title">Start with your reviews.</h2>
+        <p id="empty-copy">Upload a CSV file with <code>id,text</code> columns. FeedbackLens will turn your customer feedback into clear, actionable insights.</p>
+        <button id="empty-upload" class="button button-primary" type="button"><svg><use href="#i-upload"/></svg><span>Choose CSV file</span></button>
+        <div class="empty-steps" aria-label="How it works"><span><b>01</b> Upload reviews</span><i></i><span><b>02</b> Run analysis</span><i></i><span><b>03</b> Explore insights</span></div>
+      </section>
+
+      <section class="metrics is-hidden" aria-label="Key metrics">
+        <article class="metric-card"><div><span class="metric-label">Total reviews</span><strong id="metric-total">—</strong></div><span class="metric-icon neutral"><svg><use href="#i-file"/></svg></span></article>
+        <article class="metric-card"><div><span class="metric-label">Positive</span><div class="metric-line"><strong id="metric-positive">—</strong><small id="metric-positive-percent"></small></div></div><span class="metric-icon green"><svg><use href="#i-smile"/></svg></span></article>
+        <article class="metric-card"><div><span class="metric-label">Needs attention</span><div class="metric-line"><strong id="metric-attention">—</strong><small id="metric-attention-percent"></small></div></div><span class="metric-icon amber"><svg><use href="#i-alert"/></svg></span></article>
+        <article class="metric-card"><div><span class="metric-label">Top theme</span><strong id="metric-theme" class="theme-value">—</strong></div><span class="metric-icon blue"><svg><use href="#i-tag"/></svg></span></article>
+      </section>
+
+      <section class="insight-grid is-hidden" aria-label="Overview charts">
+        <article class="panel sentiment-panel">
+          <div class="panel-title"><h2>Sentiment overview</h2><p>Overall distribution of customer sentiment in your reviews.</p></div>
+          <div id="sentiment-bar" class="sentiment-bar" role="img" aria-label="Sentiment distribution"></div>
+          <div id="sentiment-legend" class="sentiment-legend"></div>
+        </article>
+        <article class="panel aspect-panel">
+          <div class="panel-title"><h2>What matters most</h2><p>Key aspects mentioned across your reviews.</p></div>
+          <div id="aspect-bars" class="aspect-bars"></div>
+        </article>
+      </section>
+
+      <section class="review-grid is-hidden" id="reviews" aria-label="Review insights">
+        <article class="panel review-panel">
+          <div class="review-heading"><div class="panel-title"><h2>Review insights</h2><p>Key takeaways from your customer reviews, with AI analysis.</p></div><label class="sort-control">Sort by <select id="sort-select"><option value="priority">Priority</option><option value="original">Original order</option><option value="sentiment">Sentiment</option></select></label></div>
+          <div class="table-wrap"><table><thead><tr><th>Review</th><th>Sentiment</th><th>Priority</th><th>Key insight</th></tr></thead><tbody id="review-body"></tbody></table></div>
+          <div class="table-foot"><span id="table-count">0 reviews</span><button id="download-btn" class="text-button" type="button"><svg><use href="#i-download"/></svg>Download results</button></div>
+        </article>
+        <aside class="panel detail-panel" id="detail" aria-label="Selected review detail"><div class="detail-placeholder">Select a review to see its evidence and suggested action.</div></aside>
+      </section>
+      <footer class="main-footer">FeedbackLens · Gemini powered review intelligence · Runs locally</footer>
+    </main>
+  </div>
+</body>
+</html>
