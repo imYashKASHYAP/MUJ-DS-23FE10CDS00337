@@ -11,7 +11,7 @@
 | **Student Name** | Yash Kashyap |
 | **Registration Number** | 23FE10CDS00337 |
 | **Branch** | Computer Science & Engineering (Data Science) |
-| **Batch** | Batch F |
+| **Batch** | Batch E |
 | **Project Title** | FeedbackLens — Aspect-Based Customer Review Intelligence with Gemini LLM |
 | **GitHub Username** | [imYashKASHYAP](https://github.com/imYashKASHYAP) |
 | **Repository URL** | [https://github.com/imYashKASHYAP/MUJ-DS-23FE10CDS00337](https://github.com/imYashKASHYAP/MUJ-DS-23FE10CDS00337) |
