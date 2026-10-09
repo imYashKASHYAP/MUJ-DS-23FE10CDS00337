@@ -133,7 +133,7 @@ cp .env.example .env
 ```
 Edit `.env`:
 ```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
+GEMINI_API_KEY=AQ.Ab8RN6Ki7_v7NZobhJI2HaK2dPfsN4vFnqmWlCEBksfd_XNHCw
 ```
 
 ### Step 3: Run the Project
